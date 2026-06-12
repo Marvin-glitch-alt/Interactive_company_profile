@@ -14,3 +14,9 @@ instance/leads.db
 
 # VS Code settings (optional)
 .vscode/
+
+instance/
+*.db
+__pycache__/
+.env
+.venv/
