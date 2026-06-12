@@ -1,0 +1,16 @@
+# Flask / Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables
+.env
+
+# Instance folder (contains database)
+instance/
+
+# SQLite database (extra safety if not inside instance)
+instance/leads.db
+
+# VS Code settings (optional)
+.vscode/
