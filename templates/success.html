@@ -6,30 +6,83 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
           <style>
-            .btn{
-                background-color: #4a5d23;
-            }
-            .btn:hover{
-                background-color: #32450b;
-            }
+
+.thankyou-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("{{ url_for('static', filename='images/gscc_hero_background_branded.png') }}");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.glass-card {
+    width: 100%;
+    max-width: 600px;
+
+    padding: 3rem;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25);
+
+    color: white;
+}
+
+.glass-card h1 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.glass-card .lead {
+    margin-bottom: 2rem;
+}
+.btn{
+    background-color: #4a5d23;
+    border: none;
+}
+.btn:hover{
+    background: #32450b;
+    border: none;
+}
+.btn:focus {
+    background-color: #d9bb25 !important;
+}
+
           </style>
 </head>
 <body>
 
-<div class="container py-5 text-center">
+<div class="thankyou-wrapper">
 
-    <h1>Thank You</h1>
+    <div class="glass-card text-center">
 
-    <p class="lead">
-        Your information has been received.
-    </p>
+        <h1>Thank You</h1>
 
-    <a href="/profile"
-       class="btn btn-primary">
+        <p class="lead">
+            Your information has been received.
+        </p>
 
-       View Company Profile
+        <a href="/profile" class="btn btn-primary">
+            View Company Profile
+        </a>
 
-    </a>
+    </div>
 
 </div>
 

@@ -104,9 +104,12 @@ with app.app_context():
 # ROUTES
 # ==========================================
 
-@app.route("/")
+from flask import session
+
+@app.route('/')
 def home():
-    return render_template("landing.html")
+    session['allowed_access'] = True
+    return render_template('landing.html')
 
 
 @app.route("/capture-lead", methods=["POST"])
@@ -127,12 +130,20 @@ def capture_lead():
 
 @app.route("/success")
 def success():
-    return render_template("success.html")
+
+    if not session.get('allowed_access'):
+        return redirect(url_for('home'))
+    
+    return render_template("success.html") 
 
 
-@app.route("/profile")
+@app.route('/profile')
 def profile():
-    return render_template("profile.html")
+
+    if not session.get('allowed_access'):
+        return redirect(url_for('home'))
+
+    return render_template('profile.html')
 
 
 # ==========================================

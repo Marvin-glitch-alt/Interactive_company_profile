@@ -1,101 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOGREAT Ltd.</title>
 
-    <title>Company Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
-    .btn{
-        background:#4a5d23;
-    }
- 
-    .btn:hover{
-        background:#d9bb25;
-    }
-    .btn-gold{
-        background:#d9bb25;
-    }
-    .btn-gold:hover{
-        background:#4a5d23;
-    }
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
+body{
+min-height:100vh;
+background-image: url("{{ url_for('static', filename='images/gscc_hero_background_branded.png') }}");
+background-size:cover;
+background-position:center;
+overflow-x:hidden;
+color:white;
+font-family:'Poppins',sans-serif;
+}
 
+.overlay{
+position:fixed;
+inset:0;
+background:
+linear-gradient(
+90deg,
+rgba(0, 0, 0, 0.85),
+rgba(0,0,0,.55)
+);
+backdrop-filter:blur(4px);
+z-index:-1;
+}
+
+.hero{
+padding:20px;
+}
+
+.logo-card{
+width:220px;
+background:white;
+padding:12px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+animation:float 5s ease-in-out infinite;
+}
+
+.logo-card img{
+width:100%;
+}
+
+.tagline{
+position:absolute;
+right:80px;
+top:60px;
+}
+
+.tagline h1{
+font-size:1.5rem;
+font-weight:300;
+color:white;
+}
+
+.cards-grid{
+display:grid;
+grid-template-columns:
+1.2fr 0.9fr 1fr;
+gap:15px;
+margin-top:40px;
+}
+
+.glass-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.25);
+backdrop-filter:blur(4px);
+border-radius:30px;
+padding:20px;
+box-shadow:
+0 8px 32px rgba(0,0,0,.35);
+transition:.4s;
+}
+
+.glass-card:hover{
+transform:translateY(-10px);
+box-shadow:
+0 20px 40px rgba(255,215,0,.2);
+}
+
+.glass-card h2{
+color:#d4af37;
+font-size:2rem;
+margin-bottom:25px;
+}
+
+.about p{
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.highlight{
+margin-top:40px;
+font-size:1.3rem;
+font-weight:600;
+}
+
+.highlight span{
+display:block;
+color:#d4af37;
+}
+
+.services ul{
+list-style:none;
+}
+
+.services li{
+padding:20px 0;
+border-bottom:1px solid rgba(255,255,255,.15);
+font-size:1.2rem;
+}
+
+.services a{
+    color:white;
+    text-decoration:none;
+    display:block;
+    transition:.3s;
+}
+
+.services a:hover{
+    color:#d4af37;
+    padding-left:10px;
+}
+
+.platform-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+.platform-item{
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.platform-item:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.08);
+}
+
+.platform-item img{
+    max-width:120px;
+    max-height:45px;
+    object-fit:contain;
+    filter:brightness(1.05);
+}
+
+.bottom-panel{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.impact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.impact-bar {
+    width: 0.2rem;
+    height: 1.2rem;
+    background-color: #d9bb25;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}
+
+.impact,
+.contact{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.18);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:25px;
+}
+
+.impact h2,
+.contact h2{
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.impact-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.contact a{
+display:block;
+color:white;
+text-decoration:none;
+margin-bottom:15px;
+font-size:1.1rem;
+transition:.3s;
+}
+
+.contact a:hover{
+color:#d4af37;
+padding-left:10px;
+}
+
+.glass-card h2,
+.contact h2,
+.impact h2,
+.tagline h1{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+}
+
+@media(max-width:1200px){
+
+.cards-grid{
+grid-template-columns:1fr;
+}
+
+.bottom-panel{
+grid-template-columns:1fr;
+}
+
+.tagline{
+position:relative;
+top:auto;
+right:auto;
+margin-top:30px;
+}
+
+}
 </style>
+
 </head>
+
 <body>
 
-<div class="container-fluid py-4">
+<div class="overlay"></div>
 
-    <div class="row">
+<section class="hero">
 
-        <div class="col-12">
+    <!-- Logo -->
+    <div class="logo-card">
+        <a href="https://gscc.africa/"><img src="{{ url_for('static', filename='images/geogreat-logo.png') }}" alt="Geogreat-logo"></a>
+    </div>
 
-            <div class="card shadow-sm">
+    <!-- Slogan -->
+    <div class="tagline">
+        <h1>Execute With Piece Of Mind</h1>
+    </div>
 
-                <div class="card-body">
+    <!-- Main Cards -->
+    <div class="cards-grid">
 
-                    <h2 class="mb-3">
-                        Company Profile
-                    </h2>
+        <!-- About -->
+        <div class="glass-card about">
+            <h2><i class="fas fa-users"></i> ABOUT</h2>
 
-                    <iframe
-                        src="{{ url_for('static', filename='Company_Profile.pdf') }}"
-                        width="100%"
-                        height="800px"
-                        style="border:none;">
-                    </iframe>
+            <p>
+                GEOGREAT Ltd. helps organizations streamline
+                procurement, automate processes, and optimize
+                operations for sustainable growth.
+            </p>
 
-                </div>
+            <p>
+                We combine deep domain expertise with innovative
+                technology to deliver intelligent solutions that
+                drive efficiency, reduce costs, and create
+                lasting impact.
+            </p>
 
+            <div class="highlight">
+                Processes.Procurement.Personnel
+                <span>Make It Seamless!</span>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="glass-card services">
+            <h2><i class="fas fa-cogs"></i> SERVICES</h2>
+
+            <ul>
+                <li><a href="https://gscc.africa/service/business-process-automation/">Business Process Automation</a></li>
+                <li><a href="https://gscc.africa/service/fractional-procurement-management/">Fractional Procurement Management</a></li>
+                <li><a href="https://gscc.africa/service/workready-prep-hub/">WorkReady Prep Hub</a></li>
+                
+            </ul>
+        </div>
+
+        <!-- Platforms -->
+        <div class="glass-card platforms">
+            <h2><i class="fas fa-layer-group"></i> PLATFORMS</h2>
+
+            <div class="platform-grid">
+
+        <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/oraclenetsuite.png') }}" alt="Oracle NetSuite">
             </div>
 
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/sap.png') }}" alt="SAP">
+            </div>
+
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/dynamics365.png') }}" alt="Dynamics 365">
+            </div>
+
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/mechconnect.png') }}" alt="Mech Connect">
+            </div>
+
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/nyumbazetu.png') }}" alt="Nyumba Zetu">
+            </div>
+
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/OF.png') }}" alt="OF">
+            </div>
+
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/odoo.png') }}" alt="Odoo">
+            </div>
+
+            <div class="platform-item">
+                <img src="{{ url_for('static', filename='images/Smart-Legal-Logo-1.png') }}" alt="Smart Legal">
+            </div>
+
+        </div>
         </div>
 
     </div>
 
-</div>
+    <!-- Footer Panel -->
 
-<div class="container-fluid py-4">
+    <div class="bottom-panel">
 
-    <div class="row justify-content-center">
+        <div class="glass-card impact">
+            <h2>IMPACT</h2>
 
-        <div class="col-lg-9">
-
-            <div class="card shadow-sm">
-
-                <div class="card-body">
-
-                    <h4>Need More Information?</h4>
-
-                    <a href="#"
-                       class="btn btn-primary w-100 mb-2">
-                        Request Proposal
-                    </a>
-
-                    <a href="https://wa.me/254703570025" target="_blank""
-                       class="btn btn-gold btn-success w-100 mb-2">
-                        WhatsApp Us
-                    </a>
-
-                    <a href="https://gscc.africa/contact-us/"
-                       class="btn btn-dark w-100">
-                        Book Consultation
-                    </a>
-
-                </div>
-
+            <div class="impact-grid">
+                <div class="impact-item">
+                            <div class="impact-bar"></div>
+                            <span class="impact-text">Cost Reduction</span>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-bar"></div>
+                            <span class="impact-text">Better Visibility</span>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-bar"></div>
+                            <span class="impact-text">Process Automation</span>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-bar"></div>
+                            <span class="impact-text">Faster Decisions</span>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-bar"></div>
+                            <span class="impact-text">Supplier Optimization</span>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-bar"></div>
+                            <span>Operational Efficiency</span>
+                        </div>
             </div>
+        </div>
 
+        <div class="glass-card contact">
+            <h2>CONTACT</h2>
+
+            <a href="https://wa.me/254703570025">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d9bb25" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                </svg> +254 703 570 025
+            </a>
+
+            <a href="mailto:consult-us@gscc.africa">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d9bb25" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                </svg> consult-us@gscc.africa
+            </a>
+
+            <a href="https://gscc.africa">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d9bb25" class="bi bi-globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                </svg> gscc.africa
+            </a>
         </div>
 
     </div>
 
-</div>
+</section>
+
+<script>
+    const cards = document.querySelectorAll(".glass-card");
+
+cards.forEach(card => {
+
+card.addEventListener("mousemove", (e) => {
+
+const rect = card.getBoundingClientRect();
+
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+
+card.style.transform =
+`perspective(1000px)
+rotateX(${-(y-rect.height/2)/25}deg)
+rotateY(${(x-rect.width/2)/25}deg)
+translateY(-10px)`;
+
+});
+
+card.addEventListener("mouseleave", () => {
+
+card.style.transform =
+"perspective(1000px) rotateX(0) rotateY(0)";
+
+});
+
+});
+</script>
 
 </body>
 </html>
