@@ -108,8 +108,7 @@ from flask import session
 
 @app.route('/')
 def home():
-    session['allowed_access'] = True
-    return render_template('landing.html')
+    return render_template("landing.html")
 
 
 @app.route("/capture-lead", methods=["POST"])
