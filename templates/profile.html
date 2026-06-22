@@ -147,30 +147,23 @@ font-size:1.2rem;
     gap:12px;
     margin-top:20px;
 }
-
-.platform-item{
-    height:80px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:12px;
-
-    transition:.3s;
+.client-list{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px 24px;
+    margin-top:20px;
 }
 
-.platform-item:hover{
-    transform:translateY(-3px);
-    background:rgba(255,255,255,.08);
+.client-list a{
+    color:white;
+    text-decoration:none;
+    font-size:0.95rem;
+    transition:.3s ease;
 }
 
-.platform-item img{
-    max-width:120px;
-    max-height:45px;
-    object-fit:contain;
-    filter:brightness(1.05);
+.client-list a:hover{
+    color:#d9bb25;
+    transform:translateX(5px);
 }
 
 .bottom-panel{
@@ -327,45 +320,37 @@ margin-top:30px;
         </div>
 
         <!-- Platforms -->
-        <div class="glass-card platforms">
-            <h2><i class="fas fa-layer-group"></i> PLATFORMS</h2>
+ <div class="glass-card platforms">
 
-            <div class="platform-grid">
+    <h2>
+        <i class="fas fa-users"></i>
+        WHO WE SERVE
+    </h2>
 
-        <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/oraclenetsuite.png') }}" alt="Oracle NetSuite">
-            </div>
+    <div class="client-list">
 
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/sap.png') }}" alt="SAP">
-            </div>
+        <a href="https://gscc.africa/service/business-process-automation/">SMEs</a>
+        <a href="https://gscc.africa/service/business-process-automation/">Schools</a>
+        <a href="https://gscc.africa/service/business-process-automation/">Law Firms</a>
+        <a href="https://gscc.africa/service/business-process-automation/">Garages</a>
+        <a href="https://gscc.africa/service/business-process-automation/">NGOs</a>
+        <a href="https://gscc.africa/service/business-process-automation/">Retail Shops</a>
 
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/dynamics365.png') }}" alt="Dynamics 365">
-            </div>
+        <a href="https://gscc.africa/service/fractional-procurement-management/">ICT System Integrators</a>
+        <a href="https://gscc.africa/service/fractional-procurement-management/">Construction Firms</a>
+        <a href="https://gscc.africa/service/fractional-procurement-management/">Engineering Firms</a>
+        <a href="https://gscc.africa/service/fractional-procurement-management/">Manufacturing Firms</a>
 
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/mechconnect.png') }}" alt="Mech Connect">
-            </div>
+        <a href="https://gscc.africa/service/workready-prep-hub/" style="color:#d9bb25;">WorkReady  ></a>
+        <a href="https://gscc.africa/service/workready-prep-hub/">Supply Chain Professionals</a>
+        <a href="https://gscc.africa/service/workready-prep-hub/">Institutions</a>
+        <a href="https://gscc.africa/service/workready-prep-hub/">Universities</a>
+        <a href="https://gscc.africa/service/workready-prep-hub/">Instructors</a>
+        <a href="https://gscc.africa/service/workready-prep-hub/">Employers</a>
 
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/nyumbazetu.png') }}" alt="Nyumba Zetu">
-            </div>
+    </div>
 
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/OF.png') }}" alt="OF">
-            </div>
-
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/odoo.png') }}" alt="Odoo">
-            </div>
-
-            <div class="platform-item">
-                <img src="{{ url_for('static', filename='images/Smart-Legal-Logo-1.png') }}" alt="Smart Legal">
-            </div>
-
-        </div>
-        </div>
+</div>
 
     </div>
 
